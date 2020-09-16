@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
+// TODO: https://github.com/gameclub000/Bill/issues/1#issuecomment-693422551
 export default function Home() {
   return (
     <div className={styles.container}>

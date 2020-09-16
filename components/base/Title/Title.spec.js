@@ -1,12 +1,12 @@
 import { mount } from 'enzyme';
 
-import Title from './title';
+import Title from '@/components/base/Title/Title';
 
 /** @test {Title Component} */
 describe('Title Component', () => {
     it('should render without crashing', () => {
-        const wrapper = mount(<Title label="test" />);
-
-        expect(wrapper.find('h1')).toHaveLength(1);
+        const label = 'test';
+        const wrapper = mount(<Title label={label} />);
+        expect(wrapper.find('h1').text()).toBe(label);
     });
 });

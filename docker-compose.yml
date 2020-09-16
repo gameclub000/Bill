@@ -1,0 +1,10 @@
+version: '3.5'
+
+services:
+    bill:
+        container_name: 'bill'
+        ports:
+            - 8080:3000
+        build:
+            context: .
+            dockerfile: Dockerfile

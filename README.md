@@ -6,7 +6,7 @@
 
 |Env| MacOS:Docker | Ubuntu |
 | ------ | ------ |------ |
-|Memory|2 GB RAM｜2 GB RAM｜
+|Memory|2 GB RAM|2 GB RAM|
 |Free space|10 GB|10 GB|
 
 ## Getting Started

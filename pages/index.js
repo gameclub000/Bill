@@ -1,8 +1,9 @@
 import Head from 'next/head';
-import { Layout, Menu, Breadcrumb, Divider, Card, Row, Col } from 'antd';
+import { Layout, Divider, Space } from 'antd';
 import styles from '@/styles/Home.module.css';
+import BillList from '@/components/containers/BillList/BillList';
 
-const { Header, Footer, Content } = Layout;
+const { Footer, Content } = Layout;
 
 export default function Home() {
     return (
@@ -13,24 +14,15 @@ export default function Home() {
             </Head>
 
             <Layout>
-                <Header className={styles.header}>
-                    <img className={styles.logo} src="/static/img/logo/logo.png" />
-                    <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
-                        <Menu.Item key="1">Bill List</Menu.Item>
-                    </Menu>
-                </Header>
-                <Content style={{ padding: '0 40px' }}>
-                    <Breadcrumb style={{ margin: '16px 0' }}>
-                        <Breadcrumb.Item>Home</Breadcrumb.Item>
-                        <Breadcrumb.Item>Bill List</Breadcrumb.Item>
-                    </Breadcrumb>
+                <Content style={{ padding: '40px' }}>
                     <div className={styles.content}>
                         <div>表单</div>
                         <Divider />
-                        <Row>
-                            <Col span={12}>表格</Col>
-                            <Col span={12}>图表</Col>
-                        </Row>
+                        <Space>
+                            <BillList />
+                            <Divider type="vertical" />
+                            <div>图表</div>
+                        </Space>
                     </div>
                 </Content>
                 <Footer style={{ textAlign: 'center' }}>Bill ©2020 Created by gameclub000</Footer>

@@ -5,7 +5,7 @@ import BillCategory from '@/components/common/BillCategory/BillCategory';
 import FormatTime from '@/components/base/FormatTime/FormatTime';
 import FormatAmount from '@/components/base/FormatAmount/FormatAmount';
 
-function BillList({ dataSource, categoryDict }) {
+function BillList({ dataSource, categoryDict, loading }) {
     const columns = [
         {
             title: '时间',
@@ -33,12 +33,13 @@ function BillList({ dataSource, categoryDict }) {
         }
     ];
 
-    return <Table bordered columns={columns} dataSource={dataSource} />;
+    return <Table bordered loading={loading} columns={columns} dataSource={dataSource} />;
 }
 
 BillList.propTypes = {
     dataSource: PropTypes.array,
-    categoryDict: PropTypes.array
+    categoryDict: PropTypes.array,
+    loading: PropTypes.bool
 };
 
 export default BillList;

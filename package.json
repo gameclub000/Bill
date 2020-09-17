@@ -17,7 +17,9 @@
     "@babel/preset-react": "^7.10.4",
     "@reduxjs/toolkit": "^1.4.0",
     "antd": "^4.6.4",
+    "axios": "^0.20.0",
     "babel-jest": "^26.3.0",
+    "csvtojson": "^2.0.10",
     "dayjs": "^1.8.35",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.4",
@@ -25,6 +27,7 @@
     "next": "^9.5.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-redux": "^7.2.1"
+    "react-redux": "^7.2.1",
+    "redux-mock-store": "^1.5.4"
   }
 }

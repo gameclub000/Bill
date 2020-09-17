@@ -65,6 +65,11 @@ describe('BillList Component', () => {
 
     it('should pass this canary test', () => expect(true).toBe(true));
 
+    it('should render Table with loading', () => {
+        const { table } = setup({ loading: true });
+        expect(table.prop('loading')).toBe(true);
+    });
+
     it('should render Table', () => {
         const { table } = setup({
             dataSource: data,

@@ -5,16 +5,29 @@ import styles from '@/styles/Home.module.css';
 import BillList from '@/components/containers/BillList/BillList';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getBillList, selectBill } from '@/store/modules/billSlice';
-import { getBillCategoryList, selectBillCategory } from '@/store/modules/billCategorySlice';
+import {
+    getBillList,
+    selectVisibleBill,
+    setMonth,
+    resetMonth,
+    setCategory,
+    resetCategory
+} from '@/store/modules/billSlice';
+import {
+    getBillCategoryList,
+    selectBillCategory
+} from '@/store/modules/billCategorySlice';
+import FilterForm from '@/components/containers/FilterForm/FilterForm';
 
 const { Footer, Content } = Layout;
 
 function Home() {
     const dispatch = useDispatch();
     const status = useSelector((state) => state.bill.status);
-    const list = useSelector(selectBill);
+    const list = useSelector(selectVisibleBill);
     const categoryStatus = useSelector((state) => state.billCategory.status);
+    const defaultDate = useSelector((state) => state.bill.date);
+    const defaultCategory = useSelector((state) => state.bill.category);
     const categoryDict = useSelector(selectBillCategory);
     let loading = false;
 
@@ -44,7 +57,22 @@ function Home() {
             <Layout>
                 <Content style={{ padding: '40px' }}>
                     <div className={styles.content}>
-                        <div>表单</div>
+                        <FilterForm
+                            defaultMonth={defaultDate}
+                            defaultCategory={defaultCategory}
+                            categoryDict={categoryDict}
+                            onChangeMonth={(date, dateString) =>
+                                dispatch(setMonth({ date, dateString }))
+                            }
+                            onChangeCategory={(category) =>
+                                dispatch(setCategory(category))
+                            }
+                            onReset={() => {
+                                dispatch(resetMonth());
+                                dispatch(resetCategory());
+                            }}
+                            onAdd={() => dispatch(resetCategory())}
+                        />
                         <Divider />
                         <Space>
                             <BillList
@@ -57,7 +85,9 @@ function Home() {
                         </Space>
                     </div>
                 </Content>
-                <Footer style={{ textAlign: 'center' }}>Bill ©2020 Created by gameclub000</Footer>
+                <Footer style={{ textAlign: 'center' }}>
+                    Bill ©2020 Created by gameclub000
+                </Footer>
             </Layout>
         </div>
     );

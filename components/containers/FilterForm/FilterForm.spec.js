@@ -28,12 +28,12 @@ describe('FilterForm Component', () => {
     it('should render DatePicker with defaultMonth', () => {
         const defaultMonth = moment();
         const { datePicker } = setup({ defaultMonth });
-        expect(datePicker.prop('defaultValue')).toEqual(defaultMonth);
+        expect(datePicker.prop('value')).toEqual(defaultMonth);
     });
 
     it('should render Select with defaultCategory', () => {
         const { categorySelector } = setup({ defaultCategory: 'option' });
-        expect(categorySelector.prop('defaultValue')).toBe('option');
+        expect(categorySelector.prop('value')).toBe('option');
     });
 
     it('should call onChangeMonth', () => {

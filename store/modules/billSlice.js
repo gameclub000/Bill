@@ -8,10 +8,12 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { createSelector } from 'reselect';
 import repositoryBill from '@/respository/Bill/response';
 import { utcToLocal } from '@/utils/utcToLocal';
+import moment from 'moment';
 
 const ACTION_LIST = 'bill/fetchList';
 
 export const initialState = {
+    date: null,
     month: null,
     category: null,
     list: [],
@@ -37,10 +39,13 @@ export const slice = createSlice({
     reducers: {
         setMonth: (state, action) => {
             if (action.payload) {
-                state.month = action.payload;
+                const { date, dateString } = action.payload;
+                state.date = date;
+                state.month = dateString;
             }
         },
         resetMonth: (state) => {
+            state.date = null;
             state.month = null;
         },
         setCategory: (state, action) => {

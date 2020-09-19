@@ -15,13 +15,19 @@ function FilterForm({
     return (
         <Space>
             <DatePicker
-                defaultValue={defaultMonth}
+                value={defaultMonth}
                 onChange={onChangeMonth}
                 picker="month"
             />
-            <Select defaultValue={defaultCategory} onChange={onChangeCategory}>
+            <Select
+                style={{ width: 200 }}
+                value={defaultCategory}
+                onChange={onChangeCategory}
+            >
                 {categoryDict.map((item) => (
-                    <Option value={item.id}>{item.name}</Option>
+                    <Option value={item.id} key={item.id}>
+                        {item.name}
+                    </Option>
                 ))}
             </Select>
             <Button type="plain" onClick={onReset}>
@@ -35,7 +41,7 @@ function FilterForm({
 }
 
 FilterForm.propTypes = {
-    defaultMonth: PropTypes.object,
+    defaultMonth: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     defaultCategory: PropTypes.string,
     categoryDict: PropTypes.array,
     onChangeMonth: PropTypes.func,
@@ -48,18 +54,10 @@ FilterForm.defaultProps = {
     defaultMonth: null,
     defaultCategory: '',
     categoryDict: [],
-    onChangeMonth: (e) => {
-        e.preventDefault();
-    },
-    onChangeCategory: (e) => {
-        e.preventDefault();
-    },
-    onReset: (e) => {
-        e.preventDefault();
-    },
-    onAdd: (e) => {
-        e.preventDefault();
-    }
+    onChangeMonth: (e) => {},
+    onChangeCategory: (e) => {},
+    onReset: (e) => {},
+    onAdd: (e) => {}
 };
 
 export default FilterForm;

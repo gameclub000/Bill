@@ -1,4 +1,8 @@
-import { STATUS_FAILED, STATUS_FULFILLED, STATUS_PENDING } from '@/config/contants';
+import {
+    STATUS_FAILED,
+    STATUS_FULFILLED,
+    STATUS_PENDING
+} from '@/config/contants';
 import reducer, {
     initialState,
     getBillList,
@@ -8,6 +12,7 @@ import reducer, {
     resetCategory,
     selectVisibleBill
 } from './billSlice';
+import moment from 'moment';
 
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
@@ -30,15 +35,18 @@ describe('bill Slice', () => {
     it('should pass this canary test', () => expect(true).toBe(true));
 
     it('should handle setMonth', () => {
-        const month = '2019-10';
+        const date = moment();
+        const month = { date: date, dateString: '2019-10' };
         const action = setMonth(month);
         const state = reducer(initialState, action);
-        expect(state.month).toBe(month);
+        expect(state.date).toBe(date);
+        expect(state.month).toBe(month.dateString);
     });
 
     it('should handle resetMonth', () => {
         const action = resetMonth();
         const state = reducer(initialState, action);
+        expect(state.date).toEqual(null);
         expect(state.month).toEqual(null);
     });
 

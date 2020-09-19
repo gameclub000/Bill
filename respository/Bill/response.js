@@ -5,12 +5,14 @@ export const parseResponse = (obj) => {
 };
 
 export const parseBill = (obj) => {
+    const key = `${new Date().getTime()}-${Math.random()}`;
     const { time, type, category, amount } = obj;
     return {
         time: Number(time),
         type: Number(type),
         category: String(category),
-        amount: Number(amount)
+        amount: Number(amount),
+        key
     };
 };
 

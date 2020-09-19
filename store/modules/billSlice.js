@@ -37,8 +37,7 @@ export const slice = createSlice({
     reducers: {
         setMonth: (state, action) => {
             if (action.payload) {
-                const { dateString } = action.payload;
-                state.month = dateString;
+                state.month = action.payload;
             }
         },
         resetMonth: (state) => {

@@ -8,6 +8,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
     getBillList,
     selectVisibleBill,
+    selectCategoryAmountList,
+    selectTotalExpenditure,
+    selectTotalIncome,
     setMonth,
     resetMonth,
     setCategory,
@@ -18,6 +21,11 @@ import {
     selectBillCategory
 } from '@/store/modules/billCategorySlice';
 import FilterForm from '@/components/containers/FilterForm/FilterForm';
+import dynamic from 'next/dynamic';
+
+const BillDonut = dynamic(() =>
+    import('@/components/containers/BillDonut/BillDonut')
+);
 
 const { Footer, Content } = Layout;
 
@@ -25,9 +33,13 @@ function Home() {
     const dispatch = useDispatch();
     const status = useSelector((state) => state.bill.status);
     const list = useSelector(selectVisibleBill);
+    const categoryAmountList = useSelector(selectCategoryAmountList);
     const categoryStatus = useSelector((state) => state.billCategory.status);
     const defaultDate = useSelector((state) => state.bill.date);
     const defaultCategory = useSelector((state) => state.bill.category);
+    const totalExpenditure = useSelector(selectTotalExpenditure);
+    const totalIncome = useSelector(selectTotalIncome);
+
     const categoryDict = useSelector(selectBillCategory);
     let loading = false;
 
@@ -75,13 +87,19 @@ function Home() {
                         />
                         <Divider />
                         <Space>
-                            <BillList
-                                dataSource={list}
-                                categoryDict={categoryDict}
-                                loading={loading}
-                            />
+                            <div style={{ width: '50vw' }}>
+                                <BillList
+                                    dataSource={list}
+                                    categoryDict={categoryDict}
+                                    loading={loading}
+                                />
+                            </div>
                             <Divider type="vertical" />
-                            <div>图表</div>
+                            <BillDonut
+                                dataSource={categoryAmountList}
+                                totalExpenditure={totalExpenditure}
+                                totalIncome={totalIncome}
+                            />
                         </Space>
                     </div>
                 </Content>

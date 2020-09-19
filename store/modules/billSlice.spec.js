@@ -10,7 +10,10 @@ import reducer, {
     setCategory,
     resetMonth,
     resetCategory,
-    selectVisibleBill
+    selectVisibleBill,
+    selectCategoryAmountList,
+    selectTotalExpenditure,
+    selectTotalIncome
 } from './billSlice';
 import moment from 'moment';
 
@@ -143,6 +146,128 @@ describe('bill Slice', () => {
                 );
                 expect(selected.length).toBe(1);
                 expect(selected).toEqual([mockParameters.bill.list[0]]);
+            });
+        });
+
+        describe('selectCategoryAmountList', () => {
+            it('should return CategoryAmountList', () => {
+                const mockParameters = [
+                    {
+                        type: '0',
+                        time: '1561910400000',
+                        category: 'food',
+                        amount: 100
+                    },
+                    {
+                        type: '0',
+                        time: '1561910400000',
+                        category: 'food',
+                        amount: 5400
+                    },
+                    {
+                        type: '0',
+                        time: '1561910400000',
+                        category: 'bus',
+                        amount: 1500
+                    },
+                    {
+                        type: '0',
+                        time: '1563897600000',
+                        category: 'house',
+                        amount: 3900
+                    }
+                ];
+                const dict = [
+                    {
+                        id: 'food',
+                        name: '食物'
+                    },
+                    {
+                        id: 'bus',
+                        name: '公车'
+                    },
+                    {
+                        id: 'house',
+                        name: '房租'
+                    }
+                ];
+                const result = selectCategoryAmountList.resultFunc(
+                    mockParameters,
+                    dict
+                );
+                expect(result).toEqual([
+                    { type: '食物', value: 5500 },
+                    { type: '公车', value: 1500 },
+                    { type: '房租', value: 3900 }
+                ]);
+            });
+        });
+
+        describe('selectTotalExpenditure', () => {
+            it('should return TotalExpenditure', () => {
+                const mockParameters = [
+                    {
+                        type: 0,
+                        time: '1561910400000',
+                        category: 'food',
+                        amount: 100
+                    },
+                    {
+                        type: 0,
+                        time: '1561910400000',
+                        category: 'food',
+                        amount: 5400
+                    },
+                    {
+                        type: 1,
+                        time: '1561910400000',
+                        category: 'bus',
+                        amount: 1500
+                    },
+                    {
+                        type: 1,
+                        time: '1563897600000',
+                        category: 'house',
+                        amount: 3900
+                    }
+                ];
+                const result = selectTotalExpenditure.resultFunc(
+                    mockParameters
+                );
+                expect(result).toEqual(5500);
+            });
+        });
+
+        describe('selectTotalIncome', () => {
+            it('should return selectTotalIncome', () => {
+                const mockParameters = [
+                    {
+                        type: 0,
+                        time: '1561910400000',
+                        category: 'food',
+                        amount: 100
+                    },
+                    {
+                        type: 0,
+                        time: '1561910400000',
+                        category: 'food',
+                        amount: 5400
+                    },
+                    {
+                        type: 1,
+                        time: '1561910400000',
+                        category: 'bus',
+                        amount: 1500
+                    },
+                    {
+                        type: 1,
+                        time: '1563897600000',
+                        category: 'house',
+                        amount: 3900
+                    }
+                ];
+                const result = selectTotalIncome.resultFunc(mockParameters);
+                expect(result).toEqual(5400);
             });
         });
     });

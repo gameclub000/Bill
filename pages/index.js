@@ -5,15 +5,16 @@ import styles from '@/styles/Home.module.css';
 import BillList from '@/components/containers/BillList/BillList';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getBillList, selectBill } from '@/store/modules/billSlice';
+import { getBillList, selectBill, selectVisibleBill } from '@/store/modules/billSlice';
 import { getBillCategoryList, selectBillCategory } from '@/store/modules/billCategorySlice';
+import FilterForm from '@/components/containers/FilterForm/FilterForm';
 
 const { Footer, Content } = Layout;
 
 function Home() {
     const dispatch = useDispatch();
     const status = useSelector((state) => state.bill.status);
-    const list = useSelector(selectBill);
+    const list = useSelector(selectVisibleBill);
     const categoryStatus = useSelector((state) => state.billCategory.status);
     const categoryDict = useSelector(selectBillCategory);
     let loading = false;
@@ -44,7 +45,7 @@ function Home() {
             <Layout>
                 <Content style={{ padding: '40px' }}>
                     <div className={styles.content}>
-                        <div>表单</div>
+                        <FilterForm />
                         <Divider />
                         <Space>
                             <BillList

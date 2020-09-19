@@ -7,9 +7,7 @@ import FormatTime from '@/components/base/FormatTime/FormatTime';
 import FormatAmount from '@/components/base/FormatAmount/FormatAmount';
 
 const setup = (props) => {
-    const component = mount(
-        <BillList dataSource={props.dataSource} categoryDict={props.categoryDict} />
-    );
+    const component = mount(<BillList {...props} />);
 
     return {
         component: component,

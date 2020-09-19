@@ -18,8 +18,6 @@ const response = () =>
     new Promise((resolve, reject) => {
         provider()
             .then((response) => {
-                console.log(response);
-                console.log(response.status);
                 if (response.status === 200) {
                     try {
                         const result = parseResponse(response.data);

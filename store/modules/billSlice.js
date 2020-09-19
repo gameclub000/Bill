@@ -8,7 +8,9 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { createSelector } from 'reselect';
 import repositoryBill from '@/respository/Bill/response';
 import { utcToLocal } from '@/utils/utcToLocal';
-import moment from 'moment';
+import { groupBy, sumBy } from 'lodash';
+import { selectBillCategory } from '@/store/modules/billCategorySlice';
+import dict from '@/utils/dict';
 
 const ACTION_LIST = 'bill/fetchList';
 
@@ -96,6 +98,31 @@ export const selectVisibleBill = createSelector(
             return true;
         });
     }
+);
+
+export const selectCategoryAmountList = createSelector(
+    selectVisibleBill,
+    selectBillCategory,
+    (bills, billCategory) => {
+        const result = [];
+        const categoryGroup = groupBy(bills, 'category');
+        Object.keys(categoryGroup).map((item) => {
+            result.push({
+                value: sumBy(categoryGroup[item], (o) => o.amount),
+                type: dict({ key: item, dictionary: billCategory })
+            });
+        });
+        return result;
+    }
+);
+
+export const selectTotalExpenditure = createSelector(
+    selectVisibleBill,
+    (bills) => sumBy(bills, (o) => (o.type === 0 ? o.amount : 0))
+);
+
+export const selectTotalIncome = createSelector(selectVisibleBill, (bills) =>
+    sumBy(bills, (o) => (o.type === 1 ? o.amount : 0))
 );
 
 export const {

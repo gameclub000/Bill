@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types';
 import { DatePicker, Select, Space, Button } from 'antd';
-import 'moment/locale/zh-cn';
-import locale from 'antd/es/date-picker/locale/zh_CN';
 
 const { Option } = Select;
 
@@ -17,7 +15,6 @@ function FilterForm({
     return (
         <Space>
             <DatePicker
-                locale={locale}
                 value={defaultMonth}
                 onChange={onChangeMonth}
                 picker="month"

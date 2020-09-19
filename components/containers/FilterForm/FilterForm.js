@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { DatePicker, Select, Space, Button } from 'antd';
+import FormAdd from '@/components/containers/FormAdd/FormAdd';
 
 const { Option } = Select;
 
@@ -33,9 +34,7 @@ function FilterForm({
             <Button type="plain" onClick={onReset}>
                 重置
             </Button>
-            <Button type="primary" onClick={onAdd}>
-                新增
-            </Button>
+            <FormAdd onAdd={onAdd} categoryDict={categoryDict} />
         </Space>
     );
 }

@@ -11,6 +11,7 @@ import {
     selectCategoryAmountList,
     selectTotalExpenditure,
     selectTotalIncome,
+    addBill,
     setMonth,
     resetMonth,
     setCategory,
@@ -84,7 +85,7 @@ function Home() {
                                 dispatch(resetMonth());
                                 dispatch(resetCategory());
                             }}
-                            onAdd={() => dispatch(resetCategory())}
+                            onAdd={(bill) => dispatch(addBill(bill))}
                         />
                         <Divider />
                         <Space>

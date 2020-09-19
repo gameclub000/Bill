@@ -6,6 +6,7 @@ import {
 import reducer, {
     initialState,
     getBillList,
+    addBill,
     setMonth,
     setCategory,
     resetMonth,
@@ -36,6 +37,22 @@ describe('bill Slice', () => {
     });
 
     it('should pass this canary test', () => expect(true).toBe(true));
+
+    it('should handle addBill', () => {
+        const timestamp = new Date().getTime();
+        const bill = {
+            type: 0,
+            category: 'food',
+            amount: 100,
+            time: timestamp
+        };
+        const action = addBill(bill);
+        const state = reducer(initialState, action);
+        expect(state.list[0].type).toEqual(bill.type);
+        expect(state.list[0].category).toEqual(bill.category);
+        expect(state.list[0].amount).toEqual(bill.amount);
+        expect(state.list[0].time).toEqual(bill.time);
+    });
 
     it('should handle setMonth', () => {
         const date = moment();

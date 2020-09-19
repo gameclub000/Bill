@@ -1,0 +1,11 @@
+version: '3.5'
+
+services:
+    bill:
+        command: yarn start
+        container_name: 'bill'
+        ports:
+            - 3000:3000
+        build:
+            context: .
+            dockerfile: Dockerfile

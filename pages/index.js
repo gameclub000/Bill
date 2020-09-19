@@ -23,8 +23,9 @@ import {
 import FilterForm from '@/components/containers/FilterForm/FilterForm';
 import dynamic from 'next/dynamic';
 
-const BillDonut = dynamic(() =>
-    import('@/components/containers/BillDonut/BillDonut')
+const BillDonut = dynamic(
+    () => import('@/components/containers/BillDonut/BillDonut'),
+    { ssr: false }
 );
 
 const { Footer, Content } = Layout;

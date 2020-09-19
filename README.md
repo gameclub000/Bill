@@ -1,6 +1,6 @@
 # Bill
 
-一个简易的记账本应用程序
+一个简易的记账本应用程序—— gameclub000 (2838983406@qq.com)
 
 ## System Requirements
 

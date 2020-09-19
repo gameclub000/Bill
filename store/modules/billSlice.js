@@ -39,6 +39,17 @@ export const slice = createSlice({
     name: 'bill',
     initialState,
     reducers: {
+        addBill: (state, action) => {
+            const key = `${new Date().getTime()}-${Math.random()}`;
+            const { type, category, amount, time } = action.payload;
+            state.list.push({
+                key,
+                type,
+                category,
+                amount,
+                time
+            });
+        },
         setMonth: (state, action) => {
             if (action.payload) {
                 const { date, dateString } = action.payload;
@@ -126,6 +137,7 @@ export const selectTotalIncome = createSelector(selectVisibleBill, (bills) =>
 );
 
 export const {
+    addBill,
     setMonth,
     resetMonth,
     setCategory,

@@ -1,6 +1,7 @@
 import { shallow } from 'enzyme';
 import { DatePicker, Select, Button } from 'antd';
 import FilterForm from './FilterForm';
+import FormAdd from '@/components/containers/FormAdd/FormAdd';
 import moment from 'moment';
 
 const setup = (props) => {
@@ -17,7 +18,8 @@ const setup = (props) => {
         component,
         datePicker: component.find(DatePicker),
         categorySelector: component.find(Select),
-        button: component.find(Button)
+        button: component.find(Button),
+        FormAdd: component.find(FormAdd)
     };
 };
 
@@ -55,8 +57,8 @@ describe('FilterForm Component', () => {
     });
 
     it('should call onAdd', () => {
-        const { actions, button } = setup();
-        button.at(1).simulate('click');
+        const { actions, FormAdd } = setup();
+        FormAdd.prop('onAdd')(actions.onAdd);
         expect(actions.onAdd).toBeCalled();
     });
 });

@@ -2,8 +2,8 @@
 
 一个简易的记账本应用程序—— gameclub000 (2838983406@qq.com)
 
-项目第一版开发流程：https://github.com/gameclub000/Bill/issues/1
-项目开发进度：https://github.com/gameclub000/Bill/issues
+* 项目第一版开发流程：https://github.com/gameclub000/Bill/issues/1
+* 项目开发进度：https://github.com/gameclub000/Bill/issues
 
 ## System Requirements
 

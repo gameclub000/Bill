@@ -4,7 +4,7 @@
 
 ## System Requirements
 
-|Env| MacOS:Docker | Ubuntu |
+|Env| MacOS(Docker) | Ubuntu |
 | ------ | ------ |------ |
 |Memory|2 GB RAM|2 GB RAM|
 |Free space|10 GB|10 GB|
@@ -17,11 +17,13 @@
 
 1. 安装 [Docker](https://docs.docker.com/get-docker/)
 2. 检查端口`3000`是否被占用
-3. 在根目录打开命令行工具
+3. 在项目根目录打开命令行工具
 4. 运行以下命令启动项目
 ```shell
 docker-compose -f docker-compose.yml up
 ```
+
+使用浏览器打开[http://localhost:3000](http://localhost:3000)
 
 ### Ubuntu
 

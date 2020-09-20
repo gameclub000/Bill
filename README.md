@@ -7,7 +7,7 @@
 
 ## System Requirements
 
-|Env| MacOS(Docker) | Ubuntu |
+|Env| MacOS(Docker) | Ubuntu 18.04.4 LTS |
 | ------ | ------ |------ |
 |Memory|2 GB RAM|2 GB RAM|
 |Free space|10 GB|10 GB|
@@ -28,7 +28,7 @@ docker-compose -f docker-compose.yml up
 
 使用浏览器打开[http://localhost:3000](http://localhost:3000)
 
-### Ubuntu
+### Ubuntu 18.04.4 LTS
 
 1. 安装 [Node.js](https://nodejs.org/en/download/)
 

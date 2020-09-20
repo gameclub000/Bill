@@ -26,7 +26,7 @@
 docker-compose -f docker-compose.yml up
 ```
 
-使用浏览器打开[http://localhost:3000](http://localhost:3000)
+使用浏览器打开 [http://localhost:3000](http://localhost:3000)
 
 ### Ubuntu 18.04.4 LTS
 
@@ -47,7 +47,7 @@ npm run dev
 yarn dev
 ```
 
-使用浏览器打开[http://localhost:3000](http://localhost:3000)
+使用浏览器打开 [http://localhost:3000](http://localhost:3000)
 
 
 <img width="1280" alt="Screen Shot 2020-09-20 at 3 20 18 AM" src="https://user-images.githubusercontent.com/53006892/93687405-41210700-faf0-11ea-9c1e-cd662dbc7e29.png">

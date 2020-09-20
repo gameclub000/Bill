@@ -2,6 +2,8 @@
 
 一个简易的记账本应用程序—— gameclub000 (2838983406@qq.com)
 
+项目开发进度：https://github.com/gameclub000/Bill/issues/1
+
 ## System Requirements
 
 |Env| MacOS(Docker) | Ubuntu |

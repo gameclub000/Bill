@@ -5,7 +5,11 @@ function BillType({ type }) {
     const color = type === 0 ? 'red' : 'green';
     const text = type === 0 ? '支出' : '收入';
 
-    return [0, 1].every((item) => item !== type) ? <span>Invalid type</span>:<Tag color={color}>{text}</Tag>
+    if ([0, 1].every((item) => item !== type)) {
+        return <span>Invalid type</span>;
+    } else {
+        return <Tag color={color}>{text}</Tag>;
+    }
 }
 
 BillType.propTypes = {
